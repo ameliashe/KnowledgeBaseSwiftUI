@@ -26,6 +26,7 @@ struct FetchedCoffeeView: View {
 					CoffeeDetails(coffee: coffee)
 				} label: {
 					CoffeeRow(coffee: coffee, rowHeight: rowHeight)
+						.frame(height: CGFloat(rowHeight))
 				}
 			}
 			.navigationTitle(titleOn ? "Hot Coffee" : "")
@@ -41,14 +42,13 @@ struct FetchedCoffeeView: View {
 			let fetchDescriptor = FetchDescriptor<Coffee>(sortBy: [])
 			coffees = (try? context.fetch(fetchDescriptor)) ?? []
 
-			loadCoffees()
+			await loadCoffees()
 		}
 	}
 
-	func loadCoffees() {
+	func loadCoffees() async {
 		let url = URL(string: "https://api.sampleapis.com/coffee/hot")!
 		NetworkService.request(from: url) { result in
-			DispatchQueue.global().async {
 				switch result {
 				case .success(let data):
 					if let fetched = Parser.decode(data) {
@@ -73,7 +73,6 @@ struct FetchedCoffeeView: View {
 					errorAlertMessage = "Error: \(error.localizedDescription)"
 					showingErrorAlert = true
 				}
-			}
 		}
 	}
 }

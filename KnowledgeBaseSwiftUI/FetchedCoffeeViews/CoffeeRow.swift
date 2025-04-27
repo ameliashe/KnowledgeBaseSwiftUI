@@ -21,8 +21,8 @@ struct CoffeeRow: View {
 						.resizable()
 						.scaledToFill()
 						.clipShape(Circle())
-						.frame(width: 70, height: 70)
-						.padding(.leading, 10)
+						.frame(width: CGFloat(rowHeight - padding), height: CGFloat(rowHeight - padding))
+						.padding(.leading, 8)
 				} else {
 					Image(systemName: "photo.artframe")
 						.resizable()
