@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+	@AppStorage("titleOn") private var titleOn: Bool = true
+	@AppStorage("rowHeight") private var rowHeight: Double = 80
 
 	var body: some View {
 		TabView {
-			FetchedCoffeeView()
+			FetchedCoffeeView(titleOn: titleOn, rowHeight: rowHeight)
 				.tabItem {
 					Label("Hot Coffee", systemImage: "cup.and.saucer.fill")
 				}
-			InfoView()
+			InfoView(titleOn: titleOn, rowHeight: rowHeight)
 				.tabItem {
 					Label("Info", systemImage: "list.bullet.rectangle.portrait")
 				}
@@ -24,7 +26,7 @@ struct ContentView: View {
 					Label("Hello", systemImage: "person.circle")
 				}
 
-			SettingsView()
+			SettingsView(titleOn: $titleOn, rowHeight: $rowHeight)
 				.tabItem {
 					Label("Настройки", systemImage: "gear")
 				}
@@ -33,5 +35,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+//	ContentView()
 }

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct InfoView: View {
+	var titleOn: Bool
+	var rowHeight: Double
+
     var body: some View {
 		
 		NavigationView() {
@@ -15,15 +18,20 @@ struct InfoView: View {
 				NavigationLink {
 					InfoDetails(post: post)
 				} label: {
-					InfoRow(post: post)
+					InfoRow(rowHeight: rowHeight, post: post)
+						.frame(height: CGFloat(rowHeight))
 				}
 			}
-			.navigationTitle("Кофейные напитки")
+			.navigationTitle(titleOn ? "Favorite Coffee Drinks" : "")
+			.navigationBarTitleDisplayMode(.large)
 			.listStyle(.plain)
+		}
+		.task {
+			print()
 		}
     }
 }
 
 #Preview {
-    InfoView()
+//    InfoView(titleOn: true)
 }

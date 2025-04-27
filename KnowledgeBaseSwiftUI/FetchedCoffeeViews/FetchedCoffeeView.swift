@@ -13,6 +13,8 @@ struct FetchedCoffeeView: View {
 	@State private var errorAlertMessage = ""
 	@State private var coffees: [Coffee] = []
 	@Environment(\.modelContext) private var context
+	var titleOn: Bool
+	var rowHeight: Double
 
 
 
@@ -23,10 +25,11 @@ struct FetchedCoffeeView: View {
 				NavigationLink {
 					CoffeeDetails(coffee: coffee)
 				} label: {
-					CoffeeRow(coffee: coffee)
+					CoffeeRow(coffee: coffee, rowHeight: rowHeight)
 				}
 			}
-			.navigationTitle("Hot coffee")
+			.navigationTitle(titleOn ? "Hot Coffee" : "")
+			.navigationBarTitleDisplayMode(.large)
 			.listStyle(.plain)
 		}
 		.alert("Error", isPresented: $showingErrorAlert) {
@@ -76,5 +79,5 @@ struct FetchedCoffeeView: View {
 }
 
 #Preview {
-    FetchedCoffeeView()
+//    FetchedCoffeeView()
 }
