@@ -13,6 +13,8 @@ struct FetchedCoffeeView: View {
 	@State private var errorAlertMessage = ""
 	@State private var coffees: [Coffee] = []
 	@Environment(\.modelContext) private var context
+	var titleOn: Bool
+	var rowHeight: Double
 
 
 
@@ -23,10 +25,12 @@ struct FetchedCoffeeView: View {
 				NavigationLink {
 					CoffeeDetails(coffee: coffee)
 				} label: {
-					CoffeeRow(coffee: coffee)
+					CoffeeRow(coffee: coffee, rowHeight: rowHeight)
+						.frame(height: CGFloat(rowHeight))
 				}
 			}
-			.navigationTitle("Hot coffee")
+			.navigationTitle(titleOn ? "Hot Coffee" : "")
+			.navigationBarTitleDisplayMode(.large)
 			.listStyle(.plain)
 		}
 		.alert("Error", isPresented: $showingErrorAlert) {
@@ -38,14 +42,13 @@ struct FetchedCoffeeView: View {
 			let fetchDescriptor = FetchDescriptor<Coffee>(sortBy: [])
 			coffees = (try? context.fetch(fetchDescriptor)) ?? []
 
-			loadCoffees()
+			await loadCoffees()
 		}
 	}
 
-	func loadCoffees() {
+	func loadCoffees() async {
 		let url = URL(string: "https://api.sampleapis.com/coffee/hot")!
 		NetworkService.request(from: url) { result in
-			DispatchQueue.global().async {
 				switch result {
 				case .success(let data):
 					if let fetched = Parser.decode(data) {
@@ -70,11 +73,10 @@ struct FetchedCoffeeView: View {
 					errorAlertMessage = "Error: \(error.localizedDescription)"
 					showingErrorAlert = true
 				}
-			}
 		}
 	}
 }
 
 #Preview {
-    FetchedCoffeeView()
+//    FetchedCoffeeView()
 }

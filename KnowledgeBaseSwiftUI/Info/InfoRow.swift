@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct InfoRow: View {
+	var rowHeight: Double
+	var padding: Double = 10.0
 
 	var post: Post
 
@@ -17,14 +19,15 @@ struct InfoRow: View {
 				.resizable()
 				.scaledToFill()
 				.clipShape(Circle())
-				.frame(width: 70, height: 70)
-				.padding(.leading, 10)
+				.frame(width: CGFloat(rowHeight - padding), height: CGFloat(rowHeight - padding))
+				.padding(.leading, 8)
 			Text(post.title)
+				.font(.system(size: rowHeight/3, weight: .regular, design: .default))
 			Spacer()
 		}
     }
 }
 
 #Preview {
-	InfoRow(post: posts.first!)
+//	InfoRow(post: posts.first!)
 }
