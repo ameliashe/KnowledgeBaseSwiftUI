@@ -10,10 +10,11 @@ import SwiftData
 
 @main
 struct KnowledgeBaseSwiftUIApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-		.modelContainer(for: [Coffee.self])
-    }
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+				.preferredColorScheme(.dark)
+		}
+		.modelContainer(for: [Coffee.self, DiaryEntry.self])
+	}
 }

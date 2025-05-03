@@ -19,11 +19,11 @@ struct ContentView: View {
 				}
 			InfoView(titleOn: titleOn, rowHeight: rowHeight)
 				.tabItem {
-					Label("Info", systemImage: "list.bullet.rectangle.portrait")
+					Label("Избранное", systemImage: "heart.fill")
 				}
-			HelloView()
+			DiaryView()
 				.tabItem {
-					Label("Hello", systemImage: "person.circle")
+					Label("Дневник", systemImage: "calendar")
 				}
 
 			SettingsView(titleOn: $titleOn, rowHeight: $rowHeight)
@@ -35,5 +35,5 @@ struct ContentView: View {
 }
 
 #Preview {
-//	ContentView()
+	ContentView()
 }
