@@ -1,8 +1,5 @@
 # CoffeeLog
 
-### Screenshots
-![screenshots](Screenshots/mainscreenshot.jpg?raw=true&timestamp=123456)
-
 CoffeeLog is an intuitive iOS app for coffee enthusiasts. It combines a knowledge base of coffee recipes with a powerful daily tracker to monitor your coffee intake.
 
 ---
