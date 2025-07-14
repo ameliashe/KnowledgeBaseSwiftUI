@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct KnowledgeBaseSwiftUIApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+				.preferredColorScheme(.dark)
+		}
+		.modelContainer(for: [Coffee.self, DiaryEntry.self])
+	}
 }
