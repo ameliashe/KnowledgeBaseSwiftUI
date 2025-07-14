@@ -17,16 +17,7 @@ struct SettingsView: View {
         Form {
 			Section {
 				Text("Settings")
-				Toggle("Toggle", isOn: .constant(false))
-				Picker("Language", selection: .constant(0)) {
-					Text("English").tag(0)
-					Text("Russian").tag(1)
-				}
 				Text(colorScheme == .light ? "Light Theme Enabled" : "Dark Theme Enabled")
-			}
-			Section {
-				Slider(value: .constant(0), in: 0...100)
-				Text("Slider")
 				Toggle("Title", isOn: $titleOn)
 				Text(titleOn ? "Navigation Title Enabled" : "Navigation Title Disabled")
 			}

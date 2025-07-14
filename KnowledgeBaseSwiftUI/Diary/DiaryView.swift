@@ -1,0 +1,114 @@
+//
+//  DiaryView.swift
+//  KnowledgeBaseSwiftUI
+//
+//  Created by Amelia Romanova on 5/3/25.
+//
+
+import SwiftUI
+import SwiftData
+import Charts
+
+struct DiaryView: View {
+	@Environment(\.modelContext) private var modelContext
+	@Query(sort: \DiaryEntry.date, order: .forward) private var entries: [DiaryEntry]
+	@State private var showingEntryView: Bool = false
+
+	private var lastDays: [Date] {
+		(0..<7).compactMap {
+			Calendar.current.date(byAdding: .day, value: -$0, to: Date())
+		}.reversed()
+	}
+
+	private var dailyML: [(date: Date, totalML: Int)] {
+		lastDays.map { date in
+			let total = entries
+				.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
+				.reduce(0) { sum, entry in
+					sum + entry.drinks.reduce(0) { s, drink in
+						if let post = posts.first(where: { $0.title == drink }),
+						   let ml = Int(post.portionSize) {
+							return s + ml
+						}
+						return s
+					}
+				}
+			return (date: date, totalML: total)
+		}
+	}
+
+	var body: some View {
+		NavigationStack {
+			Form {
+				Section {
+					Chart {
+						ForEach(dailyML, id: \.date) { data in
+							BarMark(
+								x: .value("День", data.date, unit: .day),
+								y: .value("Сумма, мл", data.totalML)
+							)
+						}
+					}
+					.chartXAxis {
+						AxisMarks(values: .stride(by: .day)) { _ in
+							AxisValueLabel(format: .dateTime.weekday(.abbreviated))
+						}
+					}
+					.chartYAxisLabel("Мл")
+					.frame(height: 150)
+				}
+
+				Section {
+					List {
+						ForEach(lastDays, id: \.self) { date in
+							NavigationLink {
+								let drinksForDay = entries
+									.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
+									.flatMap { $0.drinks }
+								DiaryEntryDetails(date: date, drinks: drinksForDay)
+							} label: {
+								HStack {
+									Text(date, format: .dateTime.weekday(.abbreviated).day())
+										.frame(minWidth: 80, alignment: .leading)
+									Spacer()
+									let dailyCount = entries
+										.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
+										.reduce(0) { sum, entry in
+											sum + entry.drinks.count
+										}
+
+									if dailyCount > 0 {
+										Text("\(dailyCount)")
+									} else {
+										Text("—")
+											.foregroundColor(.secondary)
+									}
+								}
+								.padding(.vertical, 4)
+							}
+						}
+					}
+				}
+
+			}
+			.navigationTitle("Дневник")
+			.navigationBarTitleDisplayMode(.large)
+			.toolbar {
+				ToolbarItem(placement: .navigationBarTrailing) {
+					Button(action: {
+						showingEntryView.toggle()
+					}) {
+						Image(systemName: "plus")
+					}
+				}
+			}
+			.sheet(isPresented: $showingEntryView) {
+				DiaryEntryView()
+			}
+		}
+	}
+}
+
+#Preview {
+	DiaryView()
+}
