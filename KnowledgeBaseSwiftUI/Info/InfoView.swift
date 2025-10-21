@@ -22,7 +22,7 @@ struct InfoView: View {
 						.frame(height: CGFloat(rowHeight))
 				}
 			}
-			.navigationTitle(titleOn ? "Избранные напитки" : "")
+			.navigationTitle(titleOn ? "Favorite Drinks" : "")
 			.navigationBarTitleDisplayMode(.large)
 			.listStyle(.plain)
 		}

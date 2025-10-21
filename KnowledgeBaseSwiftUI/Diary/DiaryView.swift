@@ -13,6 +13,7 @@ struct DiaryView: View {
 	@Environment(\.modelContext) private var modelContext
 	@Query(sort: \DiaryEntry.date, order: .forward) private var entries: [DiaryEntry]
 	@State private var showingEntryView: Bool = false
+	var titleOn: Bool
 
 	private var lastDays: [Date] {
 		(0..<7).compactMap {
@@ -44,8 +45,8 @@ struct DiaryView: View {
 					Chart {
 						ForEach(dailyML, id: \.date) { data in
 							BarMark(
-								x: .value("День", data.date, unit: .day),
-								y: .value("Сумма, мл", data.totalML)
+								x: .value("Day", data.date, unit: .day),
+								y: .value("Sum, ml", data.totalML)
 							)
 						}
 					}
@@ -54,7 +55,7 @@ struct DiaryView: View {
 							AxisValueLabel(format: .dateTime.weekday(.abbreviated))
 						}
 					}
-					.chartYAxisLabel("Мл")
+					.chartYAxisLabel("ml")
 					.frame(height: 150)
 				}
 
@@ -91,7 +92,7 @@ struct DiaryView: View {
 				}
 
 			}
-			.navigationTitle("Дневник")
+			.navigationTitle(titleOn ? "Diary" : "")
 			.navigationBarTitleDisplayMode(.large)
 			.toolbar {
 				ToolbarItem(placement: .navigationBarTrailing) {
@@ -110,5 +111,5 @@ struct DiaryView: View {
 }
 
 #Preview {
-	DiaryView()
+	DiaryView(titleOn: true)
 }

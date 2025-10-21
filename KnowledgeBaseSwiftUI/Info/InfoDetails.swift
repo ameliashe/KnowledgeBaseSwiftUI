@@ -22,7 +22,7 @@ struct InfoDetails: View {
 				VStack {
 					Image(systemName: "cup.and.saucer")
 						.font(.title2)
-					Text(post.portionSize  + " мл")
+					Text(post.portionSize  + " ml")
 						.font(.title2)
 						.padding(.horizontal)
 				}
@@ -36,7 +36,7 @@ struct InfoDetails: View {
 				}
 				Divider()
 				NavigationLink(destination: StepsView(steps: post.steps)) {
-					Text("Рецепт")
+					Text("Recipe")
 						.font(.title2)
 						.fontWeight(.bold)
 						.padding()
@@ -55,8 +55,8 @@ struct InfoDetails: View {
 				}
 			}
 			VStack {
-				Text("**Кофе**:  \(post.coffeeType)")
-				Text("**Дополнительные инградиенты**:  \(post.ingredients.joined(separator: ", "))")
+				Text("**Coffee**:  \(post.coffeeType)")
+				Text("**Additional ingredients**:  \(post.ingredients.joined(separator: ", "))")
 			}
 			.font(.callout)
 			.opacity(0.6)

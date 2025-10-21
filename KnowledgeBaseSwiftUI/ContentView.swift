@@ -15,20 +15,20 @@ struct ContentView: View {
 		TabView {
 			FetchedCoffeeView(titleOn: titleOn, rowHeight: rowHeight)
 				.tabItem {
-					Label("Hot Coffee", systemImage: "cup.and.saucer.fill")
+					Label("Coffee List", systemImage: "cup.and.saucer.fill")
 				}
 			InfoView(titleOn: titleOn, rowHeight: rowHeight)
 				.tabItem {
-					Label("Избранное", systemImage: "heart.fill")
+					Label("Favorites", systemImage: "heart.fill")
 				}
-			DiaryView()
+			DiaryView(titleOn: titleOn)
 				.tabItem {
-					Label("Дневник", systemImage: "calendar")
+					Label("Diary", systemImage: "calendar")
 				}
 
 			SettingsView(titleOn: $titleOn, rowHeight: $rowHeight)
 				.tabItem {
-					Label("Настройки", systemImage: "gear")
+					Label("Settings", systemImage: "gear")
 				}
 		}
     }

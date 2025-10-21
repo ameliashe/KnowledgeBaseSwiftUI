@@ -29,7 +29,7 @@ struct FetchedCoffeeView: View {
 						.frame(height: CGFloat(rowHeight))
 				}
 			}
-			.navigationTitle(titleOn ? "Hot Coffee" : "")
+			.navigationTitle(titleOn ? "Coffee List" : "")
 			.navigationBarTitleDisplayMode(.large)
 			.listStyle(.plain)
 		}

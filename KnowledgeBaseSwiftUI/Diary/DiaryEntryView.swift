@@ -19,11 +19,11 @@ struct DiaryEntryView: View {
 	var body: some View {
 		VStack {
 			Form {
-				DatePicker("Когда?", selection: $selectedDate, displayedComponents: .date)
+				DatePicker("When?", selection: $selectedDate, displayedComponents: .date)
 					.datePickerStyle(.compact)
 
 				HStack {
-					Text("Что?")
+					Text("What?")
 					Spacer()
 					Menu {
 						ForEach(drinks, id: \.self) { drink in
@@ -34,7 +34,7 @@ struct DiaryEntryView: View {
 							})
 						}
 					} label: {
-						Text(selectedDrink == nil ? "Выберите напиток" : selectedDrink!)
+						Text(selectedDrink == nil ? "Choose a drink" : selectedDrink!)
 
 					}
 				}
@@ -46,7 +46,7 @@ struct DiaryEntryView: View {
 				try? modelContext.save()
 				dismiss()
 			} label: {
-				Text("Добавить")
+				Text("Add")
 			}
 		}
 	}
