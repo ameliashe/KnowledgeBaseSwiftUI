@@ -13,6 +13,7 @@ struct DiaryView: View {
 	@Environment(\.modelContext) private var modelContext
 	@Query(sort: \DiaryEntry.date, order: .forward) private var entries: [DiaryEntry]
 	@State private var showingEntryView: Bool = false
+	@State private var drinks: [Drink] = []
 	var titleOn: Bool
 
 	private var lastDays: [Date] {
@@ -21,15 +22,18 @@ struct DiaryView: View {
 		}.reversed()
 	}
 
+	private var drinkByTitle: [String: Drink] {
+		Dictionary(uniqueKeysWithValues: drinks.map { ($0.title, $0) })
+	}
+
 	private var dailyML: [(date: Date, totalML: Int)] {
 		lastDays.map { date in
 			let total = entries
 				.filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
 				.reduce(0) { sum, entry in
 					sum + entry.drinks.reduce(0) { s, drink in
-						if let post = posts.first(where: { $0.title == drink }),
-						   let ml = Int(post.portionSize) {
-							return s + ml
+						if let model = drinkByTitle[drink] {
+							return s + model.portionML
 						}
 						return s
 					}
@@ -107,9 +111,8 @@ struct DiaryView: View {
 				DiaryEntryView()
 			}
 		}
+		.task {
+			drinks = await DrinksLoader.loadDrinks()
+		}
 	}
-}
-
-#Preview {
-	DiaryView(titleOn: true)
 }

@@ -1,5 +1,5 @@
 //
-//  CoffeeRow.swift
+//  CoffeeCell.swift
 //  KnowledgeBaseSwiftUI
 //
 //  Created by Amelia Romanova on 4/23/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CoffeeRow: View {
+struct CoffeeCell: View {
 
 	var coffee: Coffee
 	var rowHeight: Double
@@ -38,9 +38,4 @@ struct CoffeeRow: View {
 			Spacer()
 		}
 	}
-}
-
-
-#Preview {
-//	CoffeeRow(coffee: coffee.first!)
 }

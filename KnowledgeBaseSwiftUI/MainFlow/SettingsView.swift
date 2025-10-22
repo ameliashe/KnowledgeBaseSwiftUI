@@ -12,6 +12,7 @@ struct SettingsView: View {
 	@Binding var titleOn: Bool
 	@Binding var rowHeight: Double
 	@State var isChanging: Bool = false
+	@State private var drinks: [Drink] = []
 	
 	var body: some View {
 		NavigationStack {
@@ -27,13 +28,16 @@ struct SettingsView: View {
 						isChanging = editing
 					})
 					if isChanging {
-						InfoRow(rowHeight: rowHeight, post: posts.first!)
+						DrinkCell(rowHeight: rowHeight, drink: drinks.first!)
 							.frame(height: CGFloat(rowHeight))
 					}
 				}
 			}
 			.navigationTitle(titleOn ? "Settings" : "")
 			.navigationBarTitleDisplayMode(.large)
+		}
+		.task {
+			drinks = await DrinksLoader.loadDrinks()
 		}
 	}
 }

@@ -25,7 +25,7 @@ struct FetchedCoffeeView: View {
 				NavigationLink {
 					CoffeeDetails(coffee: coffee)
 				} label: {
-					CoffeeRow(coffee: coffee, rowHeight: rowHeight)
+					CoffeeCell(coffee: coffee, rowHeight: rowHeight)
 						.frame(height: CGFloat(rowHeight))
 				}
 			}
@@ -75,8 +75,4 @@ struct FetchedCoffeeView: View {
 				}
 		}
 	}
-}
-
-#Preview {
-//    FetchedCoffeeView()
 }

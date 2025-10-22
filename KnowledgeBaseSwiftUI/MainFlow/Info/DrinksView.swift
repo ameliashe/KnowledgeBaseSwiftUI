@@ -1,5 +1,5 @@
 //
-//  InfoView.swift
+//  DrinksView.swift
 //  KnowledgeBaseSwiftUI
 //
 //  Created by Amelia Romanova on 4/23/25.
@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct InfoView: View {
+struct DrinksView: View {
+	@State private var drinks: [Drink] = []
 	var titleOn: Bool
 	var rowHeight: Double
 
     var body: some View {
 		
 		NavigationView() {
-			List(posts) { post in
+			List(drinks) { drink in
 				NavigationLink {
-					InfoDetails(post: post)
+					DrinkDetails(drink: drink)
 				} label: {
-					InfoRow(rowHeight: rowHeight, post: post)
+					DrinkCell(rowHeight: rowHeight, drink: drink)
 						.frame(height: CGFloat(rowHeight))
 				}
 			}
@@ -27,11 +28,7 @@ struct InfoView: View {
 			.listStyle(.plain)
 		}
 		.task {
-			print()
+			drinks = await DrinksLoader.loadDrinks()
 		}
     }
-}
-
-#Preview {
-//    InfoView(titleOn: true)
 }

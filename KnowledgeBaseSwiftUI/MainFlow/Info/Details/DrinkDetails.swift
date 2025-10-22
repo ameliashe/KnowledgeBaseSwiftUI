@@ -1,5 +1,5 @@
 //
-//  InfoDetails.swift
+//  DrinkDetails.swift
 //  KnowledgeBaseSwiftUI
 //
 //  Created by Amelia Romanova on 4/23/25.
@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct InfoDetails: View {
-	var post: Post
+struct DrinkDetails: View {
+	var drink: Drink
 
 	var body: some View {
 		ScrollView {
-			post.image
+			Image(drink.imageName)
 				.resizable()
 				.scaledToFill()
-			Text(post.title)
+			Text(drink.title)
 				.font(.largeTitle)
 				.fontWeight(.semibold)
 			HStack {
 				VStack {
 					Image(systemName: "cup.and.saucer")
 						.font(.title2)
-					Text(post.portionSize  + " ml")
+					Text("\(drink.portionML)" + " ml")
 						.font(.title2)
 						.padding(.horizontal)
 				}
@@ -30,12 +30,12 @@ struct InfoDetails: View {
 				VStack {
 					Image(systemName: "timer")
 						.font(.title2)
-					Text(post.cookingTime)
+					Text("\(drink.minutes)")
 						.font(.title2)
 						.padding(.horizontal)
 				}
 				Divider()
-				NavigationLink(destination: StepsView(steps: post.steps)) {
+				NavigationLink(destination: StepsView(steps: drink.steps)) {
 					Text("Recipe")
 						.font(.title2)
 						.fontWeight(.bold)
@@ -55,21 +55,17 @@ struct InfoDetails: View {
 				}
 			}
 			VStack {
-				Text("**Coffee**:  \(post.coffeeType)")
-				Text("**Additional ingredients**:  \(post.ingredients.joined(separator: ", "))")
+				Text("Coffee: " + "\(drink.coffeeType.localizedString)")
+				Text("Additional ingredients: " + "\(drink.ingredients.joined(separator: ", "))")
 			}
 			.font(.callout)
 			.opacity(0.6)
 
 			Divider()
-			Text(post.description)
+			Text(drink.description)
 				.font(.body)
 				.padding(.horizontal)
 
 		}
 	}
-}
-
-#Preview {
-	InfoDetails(post: posts[1])
 }

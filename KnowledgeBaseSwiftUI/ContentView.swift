@@ -17,7 +17,7 @@ struct ContentView: View {
 				.tabItem {
 					Label("Coffee List", systemImage: "cup.and.saucer.fill")
 				}
-			InfoView(titleOn: titleOn, rowHeight: rowHeight)
+			DrinksView(titleOn: titleOn, rowHeight: rowHeight)
 				.tabItem {
 					Label("Favorites", systemImage: "heart.fill")
 				}

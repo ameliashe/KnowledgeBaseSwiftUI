@@ -1,5 +1,5 @@
 //
-//  DiaryModel.swift
+//  DiaryEntry.swift
 //  KnowledgeBaseSwiftUI
 //
 //  Created by Amelia Romanova on 5/3/25.

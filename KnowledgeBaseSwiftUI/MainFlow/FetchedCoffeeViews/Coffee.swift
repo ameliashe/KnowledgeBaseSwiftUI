@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  Coffee.swift
 //  KnowledgeBaseSwiftUI
 //
 //  Created by Amelia Romanova on 4/23/25.

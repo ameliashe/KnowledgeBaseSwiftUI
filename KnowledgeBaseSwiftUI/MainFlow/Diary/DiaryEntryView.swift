@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct DiaryEntryView: View {
-	let drinks = posts.map( { $0.title })
+	@State private var drinks: [String] = []
 	@State private var selectedDate: Date = Date()
 	@State private var selectedDrink: String?
 	@Environment(\.modelContext) private var modelContext
@@ -49,9 +49,12 @@ struct DiaryEntryView: View {
 				Text("Add")
 			}
 		}
+		.task {
+			let items = await DrinksLoader.loadDrinks()
+			self.drinks = items.map { $0.title }
+			if self.selectedDrink == nil, let first = self.drinks.first {
+				self.selectedDrink = first
+			}
+		}
 	}
-}
-
-#Preview {
-	DiaryEntryView()
 }

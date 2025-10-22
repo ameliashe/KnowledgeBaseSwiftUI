@@ -10,9 +10,23 @@
 		CE100E752DB86EE800E7E886 /* KnowledgeBaseSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowledgeBaseSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		26095DC42EA8601D00D3A213 /* Exceptions for "KnowledgeBaseSwiftUI" folder in "Compile Sources" phase from "KnowledgeBaseSwiftUI" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = CE100E712DB86EE800E7E886 /* Sources */;
+			membershipExceptions = (
+				JSON/drinks.en.json,
+				JSON/drinks.ru.json,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CE100E772DB86EE800E7E886 /* KnowledgeBaseSwiftUI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				26095DC42EA8601D00D3A213 /* Exceptions for "KnowledgeBaseSwiftUI" folder in "Compile Sources" phase from "KnowledgeBaseSwiftUI" target */,
+			);
 			path = KnowledgeBaseSwiftUI;
 			sourceTree = "<group>";
 		};

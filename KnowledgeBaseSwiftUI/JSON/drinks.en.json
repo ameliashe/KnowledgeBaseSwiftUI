@@ -1,0 +1,101 @@
+[
+	{
+		"id": 1,
+		"title": "Cappuccino",
+		"description": "A classic Italian drink combining a strong shot of espresso with hot, foamed milk. The foam is dense and velvety, softening every sip.\n\nBalanced in acidity and sweetness. Traditionally served in a shallow porcelain cup.\n\nPerfect for an energetic start to the day. Its aroma lifts your mood and gives you a boost.",
+		"imageName": "cappuccino",
+		"coffeeType": "ground",
+		"ingredients": ["Milk"],
+		"steps": ["Brew espresso", "Heat milk", "Froth milk", "Pour milk into espresso", "Spoon foam on top"],
+		"minutes": 5,
+		"portionML": 150
+	},
+	{
+		"id": 2,
+		"title": "Latte",
+		"description": "Creamy and gentle: a robust espresso softened with plenty of hot milk. A thin layer of microfoam gives a silky texture and mild taste.\n\nGreat for morning or daytime breaks. You can add flavored syrups, spices, or toppings.\n\nEndless room for experimentation—caramel, vanilla, or cinnamon highlight milk’s natural sweetness.",
+		"imageName": "latte",
+		"coffeeType": "ground",
+		"ingredients": ["Milk"],
+		"steps": ["Brew espresso", "Heat milk", "Froth milk", "Pour milk into espresso", "Top with foam"],
+		"minutes": 5,
+		"portionML": 230
+	},
+	{
+		"id": 3,
+		"title": "Raf",
+		"description": "A Russian-born favorite: espresso, cream, and sugar in balanced proportions. Natural vanilla adds a delicate aroma and subtle sweetness.\n\nWhipped to an airy, creamy consistency, resulting in a velvety drink with no bitterness.\n\nPerfect for slow, cozy get-togethers. Serve in a clear glass to enjoy its texture.",
+		"imageName": "raf",
+		"coffeeType": "ground",
+		"ingredients": ["Cream", "Sugar", "Vanilla extract"],
+		"steps": ["Brew espresso", "Add cream", "Add sugar", "Add vanilla", "Whip until creamy"],
+		"minutes": 5,
+		"portionML": 150
+	},
+	{
+		"id": 4,
+		"title": "Affogato",
+		"description": "A delightful pairing: a fresh scoop of vanilla ice cream generously topped with hot espresso — a dessert and a drink in one.\n\nHot coffee gently melts the ice cream, creating a creamy, tender texture. Sweetness and gentle bitterness are nicely balanced.\n\nServe immediately to keep the temperature contrast. A quick after-meal treat.",
+		"imageName": "affogato",
+		"coffeeType": "ground",
+		"ingredients": ["Ice cream"],
+		"steps": ["Add ice cream to a cup", "Brew espresso", "Pour espresso over ice cream"],
+		"minutes": 2,
+		"portionML": 120
+	},
+	{
+		"id": 5,
+		"title": "Turkish Coffee",
+		"description": "Brewed slowly in a small cezve over low heat. The process rewards patience and attention.\n\nThe drink has a dense body and rich flavor, often spiced with cardamom or cinnamon.\n\nServed in small cups together with grounds left to settle at the bottom — a ritual for unhurried enjoyment.",
+		"imageName": "turkish",
+		"coffeeType": "ground",
+		"ingredients": ["Cardamom"],
+		"steps": ["Add water to cezve", "Add coffee", "Add cardamom", "Heat slowly until foaming", "Pour into cups"],
+		"minutes": 7,
+		"portionML": 60
+	},
+	{
+		"id": 6,
+		"title": "Mocha",
+		"description": "Chocolatey and cozy: espresso, warm milk, and rich chocolate syrup. Sweet and full-bodied with a hint of coffee bitterness.\n\nReminiscent of hot chocolate with a coffee base. Top with whipped cream or dust with cocoa.\n\nPerfect for chilly days — it warms and brightens the mood.",
+		"imageName": "mocha",
+		"coffeeType": "ground",
+		"ingredients": ["Milk", "Chocolate syrup", "Whipped cream"],
+		"steps": ["Brew espresso", "Add chocolate syrup", "Heat milk", "Froth milk", "Combine and garnish with cream"],
+		"minutes": 5,
+		"portionML": 200
+	},
+	{
+		"id": 7,
+		"title": "Espresso Martini",
+		"description": "A harmony of strong espresso, vodka, and coffee liqueur. Shaken with ice until a fine foam forms on top.\n\nRefreshing and invigorating at once. Espresso’s gentle acidity meets spirited strength.\n\nServe in a chilled cocktail glass — perfect for late-evening moments and after-dinner.",
+		"imageName": "espresso_martini",
+		"coffeeType": "ground",
+		"ingredients": ["Vodka", "Coffee liqueur"],
+		"steps": ["Add vodka, coffee liqueur, and espresso to a shaker with ice", "Shake until frothy", "Strain into a glass"],
+		"minutes": 5,
+		"portionML": 120
+	},
+	{
+		"id": 8,
+		"title": "Dalgona",
+		"description": "A trendy whipped coffee foam made from instant coffee, sugar, and water, spooned over cold milk for a striking temperature contrast.\n\nWhipping creates an airy, billowy mass with an intense coffee aroma. Sweetness is easy to tune with the ratio.\n\nMade famous by TikTok and Instagram, and easy to make at home.",
+		"imageName": "dalgona",
+		"coffeeType": "instant",
+		"ingredients": ["Sugar", "Milk"],
+		"steps": ["Combine coffee, sugar, and water", "Whip until fluffy", "Fill a cup with milk", "Spoon the foam on top"],
+		"minutes": 5,
+		"portionML": 200
+	},
+	{
+		"id": 9,
+		"title": "Bumble",
+		"description": "A refreshing mix: strong espresso combined with chilled orange juice and ice. Citrusy freshness meets coffee richness.\n\nA pinch of cinnamon or ginger adds a gentle spice. Quick to make and striking in a tall glass.\n\nIdeal for hot summer days — bright, bold, and energizing.",
+		"imageName": "bumble",
+		"coffeeType": "ground",
+		"ingredients": ["Orange juice", "Cinnamon"],
+		"steps": ["Brew espresso and cool it", "Add juice with ice to a glass", "Top with espresso and spices"],
+		"minutes": 3,
+		"portionML": 200
+	}
+]

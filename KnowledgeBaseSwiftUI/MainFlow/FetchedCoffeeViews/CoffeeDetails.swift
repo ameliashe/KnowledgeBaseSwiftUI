@@ -34,7 +34,3 @@ struct CoffeeDetails: View {
 		}
     }
 }
-
-#Preview {
-//	CoffeeDetails(post: posts[1])
-}
